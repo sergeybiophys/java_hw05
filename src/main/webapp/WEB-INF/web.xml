@@ -7,12 +7,12 @@
 
   <servlet>
     <servlet-name>homeServlet</servlet-name>
-    <servlet-class>sv.from.work.HomeServlet</servlet-class>
+    <servlet-class>sv.from.work.servlet.HomeServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>homeServlet</servlet-name>
-    <url-pattern>/time</url-pattern>
+    <url-pattern>/home</url-pattern>
   </servlet-mapping>
 
 </web-app>
