@@ -25,29 +25,8 @@ public class HomeServlet extends HttpServlet {
         System.out.println("Handle request");
         PrintWriter writer = resp.getWriter();
          writer.println("Current time2:" + LocalTime.now());
-        //Connection.GetAll();
-        final String URL = "jdbc:mariadb://localhost:3306/db-univer";
-        final String USER = "root";
-        final String PASS = "";
 
-
-            try (java.sql.Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
-                // Statement (PreparedStatement, CallableStatement)
-                Statement stmt = conn.createStatement();
-                // DML query (insert, update, delete) - executeUpdate(sql)
-                // int count = stmt.executeUpdate("INSERT groups (name) values ('ВПД 911')");
-                // System.out.println("count = " + count);
-                // DQL query (select) - executeQuery(sql) -> ResultSet
-                ResultSet resultSet = stmt.executeQuery("SELECT * FROM `users`");
-                while (resultSet.next()) {
-                    int id = resultSet.getInt("id");
-                    String name = resultSet.getString("username");
-                    System.out.printf("%3d | %-20s%n", id, name);
-                }
-                // close connection
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        Connection.GetAll();
 
 
     }
