@@ -8,7 +8,8 @@ public  class Connection {
     final static String USER = "root";
     final static String PASS = "";
 
-    public static void GetAll(){
+    public static ResultSet GetAll(){
+        ResultSet resultSet = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -24,7 +25,7 @@ public  class Connection {
             // int count = stmt.executeUpdate("INSERT groups (name) values ('ВПД 911')");
             // System.out.println("count = " + count);
             // DQL query (select) - executeQuery(sql) -> ResultSet
-            ResultSet resultSet = stmt.executeQuery("SELECT * FROM `users`");
+            resultSet = stmt.executeQuery("SELECT * FROM `users`");
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("username");
@@ -34,5 +35,7 @@ public  class Connection {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return  resultSet;
+
     }
 }

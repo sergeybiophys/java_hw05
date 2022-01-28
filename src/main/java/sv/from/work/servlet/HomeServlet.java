@@ -23,10 +23,26 @@ public class HomeServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.service(req, resp);
         System.out.println("Handle request");
-        PrintWriter writer = resp.getWriter();
-         writer.println("Current time2:" + LocalTime.now());
+  /*      PrintWriter writer = resp.getWriter();
+         writer.println("Current time2:" + LocalTime.now());*/
 
-        Connection.GetAll();
+        ResultSet resultSet = Connection.GetAll();
+
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
+        //resp.addHeader("Id", "Username");
+       StringBuilder stringBuilder = new StringBuilder();
+       String id = "id";
+       String userName = "username";
+
+       stringBuilder.append("<div>");
+           stringBuilder.append("<div style=`background-color: yellow;`>"+id+"</div>");
+           stringBuilder.append("<div>"+userName+"</div>");
+       stringBuilder.append("</div>");
+
+
+        PrintWriter writer = resp.getWriter();
+        writer.println(stringBuilder.toString());
 
 
     }
