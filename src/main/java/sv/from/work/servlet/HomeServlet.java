@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalTime;
 import java.sql.*;
+import java.util.Enumeration;
+import java.util.HashSet;
 
 public class HomeServlet extends HttpServlet {
     @Override
@@ -25,8 +27,11 @@ public class HomeServlet extends HttpServlet {
         System.out.println("Handle request");
         //PrintWriter writer = resp.getWriter();
          //writer.println("Current time2:" + LocalTime.now());
-
-
+        Enumeration<String> parameterNames = req.getParameterNames();
+        if(parameterNames.hasMoreElements())
+        {
+            Connection.CreateUser(req.getParameter("username"), req.getParameter("email"),Integer.parseInt(req.getParameter("age")));
+        }
 
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");

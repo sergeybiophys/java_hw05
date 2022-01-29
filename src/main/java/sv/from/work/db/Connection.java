@@ -56,7 +56,50 @@ public  class Connection {
 
     }
 
-    public static void CreateUser(){
+    public static void CreateUser(String username,String email, Integer age){
 
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try (java.sql.Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            Statement stmt = conn.createStatement();
+            //stmt.executeUpdate("INSERT users (age,email,username) values(20,unknown@mail.ru,Unknown)");
+            //stmt.executeUpdate("INSERT users_groups(group_id,user_id) values('1','2')");
+            //------------------------------------------------------------------------------
+
+            PreparedStatement pstmt = conn.prepareStatement("INSERT users (age,email,username) values(?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            pstmt.setInt(1,age);
+            pstmt.setString(2,email);
+            pstmt.setString(3,username);
+            pstmt.executeUpdate();
+
+            int lastSet=-1;
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()){
+                lastSet=rs.getInt(1);
+            }
+
+            PreparedStatement pstmt2 = conn.prepareStatement("INSERT users_groups(group_id,user_id) values(?,?)");
+            pstmt2.setInt(1,1);
+            pstmt2.setInt(2,lastSet);
+            pstmt2.executeUpdate();
+
+            //-----------------------------------------------------------------------------
+          /*  ResultSet resultSet = stmt.executeQuery("SELECT username, name FROM users JOIN users_groups ON users.id = users_groups.user_id JOIN groups ON groups.id = users_groups.group_id");
+            while (resultSet.next()) {
+                String userName = resultSet.getString("username");
+                String groupName = resultSet.getString("name");
+                System.out.printf("|%-20s | %-20s%n", userName, groupName);
+
+            }*/
+            // close connection
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
