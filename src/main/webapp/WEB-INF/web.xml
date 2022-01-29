@@ -9,10 +9,22 @@
     <servlet-name>homeServlet</servlet-name>
     <servlet-class>sv.from.work.servlet.HomeServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>addFormServlet</servlet-name>
+    <servlet-class>sv.from.work.servlet.AddFormServlet</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>homeServlet</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>addFormServlet</servlet-name>
+    <url-pattern>/add</url-pattern>
+  </servlet-mapping>
+
+
 
 </web-app>

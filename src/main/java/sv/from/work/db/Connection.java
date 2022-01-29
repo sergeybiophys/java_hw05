@@ -55,4 +55,8 @@ public  class Connection {
         return  resultSet;
 
     }
+
+    public static void CreateUser(){
+
+    }
 }
