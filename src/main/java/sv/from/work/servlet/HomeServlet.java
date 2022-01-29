@@ -23,28 +23,36 @@ public class HomeServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.service(req, resp);
         System.out.println("Handle request");
-        PrintWriter writer = resp.getWriter();
-         writer.println("Current time2:" + LocalTime.now());
+        //PrintWriter writer = resp.getWriter();
+         //writer.println("Current time2:" + LocalTime.now());
 
-        ResultSet resultSet = Connection.GetAll();
 
-        /*resp.setContentType("text/html");
+
+        resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         //resp.addHeader("Id", "Username");
        StringBuilder stringBuilder = new StringBuilder();
-       String id = "id";
-       String userName = "new name";
+       String idHeader = "ID ";
+       String userNameHeader = "User Name";
+       String emailHeader = "E-mail";
+       String ageHeader = "Age";
 
-       stringBuilder.append("<div>");
-           //stringBuilder.append("<div style=\""+"background-color:aliceblue;padding:25px;\""+">"+id+"</div>");
-        stringBuilder.append("<div>"+id+"</div>");
+       stringBuilder.append("<div style=\""+"display: flex; flex: wrap;  width: 60%; margin: 0 auto; background-color: grey; height: 35px; justify-content: space-around;\""+">");
+            stringBuilder.append("<div style=\""+"color:green; margin-right: 10px; \""+">"+idHeader+"</div>");
+        //stringBuilder.append("<div>"+id+"</div>");
 
-        stringBuilder.append("<div>"+userName+"</div>");
-       stringBuilder.append("</div>");
+            stringBuilder.append("<div>"+userNameHeader+"</div>");
+            stringBuilder.append("<div>"+emailHeader+"</div>");
+            stringBuilder.append("<div>"+ageHeader+"</div>");
 
+        stringBuilder.append("</div>");
+        //--------------------------------------------------------------------------------------------------------------
 
         PrintWriter writer = resp.getWriter();
-        writer.println(stringBuilder.toString());*/
+
+
+        writer.println(stringBuilder.toString());
+        ResultSet resultSet = Connection.GetAll(writer);
 
 
     }
