@@ -35,8 +35,8 @@ public  class Connection {
                 int age = resultSet.getInt("age");
                 System.out.printf("%3d | %-20s | %-20s | %-4d%n" , id, name, email,age);
 
-                stringBuilder.append("<div style=\""+"display: flex; flex: wrap;  width: 60%; margin: 0 auto; background-color: white; height: 35px; justify-content: space-around;\""+">");
-                stringBuilder.append("<div style=\""+"color:green; margin-right: 10px; \""+">"+id+"</div>");
+                stringBuilder.append("<div style=\""+"display: flex; flex: wrap; width: 60%; margin: 0 auto; margin-top: 20px;  background-color: white; height: 35px; justify-content: space-around; border: 1px solid lightblue;\""+">");
+                stringBuilder.append("<div style=\""+"color:red; margin-right: 10px; \""+">"+id+"</div>");
                 //stringBuilder.append("<div>"+id+"</div>");
 
                 stringBuilder.append("<div>"+name+"</div>");

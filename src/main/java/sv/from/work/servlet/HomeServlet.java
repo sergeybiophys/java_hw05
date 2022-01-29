@@ -27,11 +27,7 @@ public class HomeServlet extends HttpServlet {
         System.out.println("Handle request");
         //PrintWriter writer = resp.getWriter();
          //writer.println("Current time2:" + LocalTime.now());
-        Enumeration<String> parameterNames = req.getParameterNames();
-        if(parameterNames.hasMoreElements())
-        {
-            Connection.CreateUser(req.getParameter("username"), req.getParameter("email"),Integer.parseInt(req.getParameter("age")));
-        }
+
 
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
@@ -43,7 +39,7 @@ public class HomeServlet extends HttpServlet {
        String ageHeader = "Age";
 
        stringBuilder.append("<div style=\""+"display: flex; flex: wrap;  width: 60%; margin: 0 auto; background-color: grey; height: 35px; justify-content: space-around;\""+">");
-            stringBuilder.append("<div style=\""+"color:green; margin-right: 10px; \""+">"+idHeader+"</div>");
+            stringBuilder.append("<div style=\""+"color:black; margin-right: 10px; \""+">"+idHeader+"</div>");
         //stringBuilder.append("<div>"+id+"</div>");
 
             stringBuilder.append("<div>"+userNameHeader+"</div>");
