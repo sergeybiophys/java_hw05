@@ -28,9 +28,8 @@ public class HomeServlet extends HttpServlet {
         //PrintWriter writer = resp.getWriter();
          //writer.println("Current time2:" + LocalTime.now());
 
-
         resp.setContentType("text/html");
-        resp.setCharacterEncoding("UTF-8");
+       resp.setCharacterEncoding("UTF-8");
         //resp.addHeader("Id", "Username");
        StringBuilder stringBuilder = new StringBuilder();
        String idHeader = "ID ";
@@ -49,13 +48,33 @@ public class HomeServlet extends HttpServlet {
         stringBuilder.append("</div>");
         //--------------------------------------------------------------------------------------------------------------
 
+        ResultSet resultSet = Connection.GetAll();
+        try{
+            while (resultSet.next()) {
+                System.out.println("iamhere");
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("username");
+                String email = resultSet.getString("email");
+                int age = resultSet.getInt("age");
+                System.out.printf("%3d | %-20s | %-20s | %-4d%n" , id, name, email,age);
+
+                stringBuilder.append("<div style=\""+"display: flex; flex: wrap; width: 60%; margin: 0 auto; margin-top: 20px;  background-color: white; height: 35px; justify-content: space-around; border: 1px solid lightblue;\""+">");
+                stringBuilder.append("<div style=\""+"color:red; margin-right: 10px; \""+">"+id+"</div>");
+                //stringBuilder.append("<div>"+id+"</div>");
+
+                stringBuilder.append("<div>"+name+"</div>");
+                stringBuilder.append("<div>"+email+"</div>");
+                stringBuilder.append("<div>"+age+"</div>");
+
+                stringBuilder.append("</div>");
+            }
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
         PrintWriter writer = resp.getWriter();
-
-
         writer.println(stringBuilder.toString());
-        ResultSet resultSet = Connection.GetAll(writer);
-
-
     }
 
     @Override

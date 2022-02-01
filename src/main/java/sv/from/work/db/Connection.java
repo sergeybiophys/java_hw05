@@ -1,5 +1,8 @@
 package sv.from.work.db;
 
+import javax.servlet.ServletException;
+import java.io.Console;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
@@ -9,7 +12,7 @@ public  class Connection {
     final static String USER = "root";
     final static String PASS = "";
 
-    public static ResultSet GetAll(PrintWriter writer){
+    public static ResultSet GetAll() {
         ResultSet resultSet = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,7 +31,12 @@ public  class Connection {
             // System.out.println("count = " + count);
             // DQL query (select) - executeQuery(sql) -> ResultSet
             resultSet = stmt.executeQuery("SELECT * FROM `users`");
-            while (resultSet.next()) {
+
+            while (resultSet.next())
+            {
+                System.out.println(resultSet.getString("username"));
+            }
+          /*  while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("username");
                 String email = resultSet.getString("email");
@@ -45,15 +53,14 @@ public  class Connection {
 
                 stringBuilder.append("</div>");
 
-            }
+            }*/
 
-            writer.println(stringBuilder.toString());
+            //writer.println(stringBuilder.toString());
             // close connection
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return  resultSet;
-
     }
 
     public static void CreateUser(String username,String email, Integer age){
