@@ -23,23 +23,19 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.service(req, resp);
-        System.out.println("Handle request");
-        //PrintWriter writer = resp.getWriter();
-         //writer.println("Current time2:" + LocalTime.now());
 
+        System.out.println("Handle request");
         resp.setContentType("text/html");
-       resp.setCharacterEncoding("UTF-8");
-        //resp.addHeader("Id", "Username");
-       StringBuilder stringBuilder = new StringBuilder();
-       String idHeader = "ID ";
-       String userNameHeader = "User Name";
-       String emailHeader = "E-mail";
-       String ageHeader = "Age";
+        resp.setCharacterEncoding("UTF-8");
+        StringBuilder stringBuilder = new StringBuilder();
+        String idHeader = "ID ";
+        String userNameHeader = "User Name";
+        String emailHeader = "E-mail";
+        String ageHeader = "Age";
 
        stringBuilder.append("<div style=\""+"display: flex; flex: wrap;  width: 60%; margin: 0 auto; background-color: grey; height: 35px; justify-content: space-around;\""+">");
             stringBuilder.append("<div style=\""+"color:black; margin-right: 10px; \""+">"+idHeader+"</div>");
-        //stringBuilder.append("<div>"+id+"</div>");
+
 
             stringBuilder.append("<div>"+userNameHeader+"</div>");
             stringBuilder.append("<div>"+emailHeader+"</div>");
@@ -48,8 +44,9 @@ public class HomeServlet extends HttpServlet {
         stringBuilder.append("</div>");
         //--------------------------------------------------------------------------------------------------------------
 
-        ResultSet resultSet = Connection.GetAll();
+
         try{
+            ResultSet resultSet = Connection.GetAll();
             while (resultSet.next()) {
                 System.out.println("iamhere");
                 int id = resultSet.getInt("id");
@@ -60,8 +57,6 @@ public class HomeServlet extends HttpServlet {
 
                 stringBuilder.append("<div style=\""+"display: flex; flex: wrap; width: 60%; margin: 0 auto; margin-top: 20px;  background-color: white; height: 35px; justify-content: space-around; border: 1px solid lightblue;\""+">");
                 stringBuilder.append("<div style=\""+"color:red; margin-right: 10px; \""+">"+id+"</div>");
-                //stringBuilder.append("<div>"+id+"</div>");
-
                 stringBuilder.append("<div>"+name+"</div>");
                 stringBuilder.append("<div>"+email+"</div>");
                 stringBuilder.append("<div>"+age+"</div>");
@@ -79,8 +74,6 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     public void destroy() {
-        //super.destroy();
         System.out.println("Destroy HomeServlet");
-
     }
 }
