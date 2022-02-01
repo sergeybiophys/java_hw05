@@ -20,7 +20,7 @@ public class AddFormServlet extends HttpServlet {
                 "<label>UserName: <input style=\""+"margin-top: 30px; \"" +"name='username'/></label><br/>" +
                 "<label>E-mail: <input style=\""+"margin-left:25px; \"" + "name='email' type='email'/></label><br/>" +
                 "<label>Age: <input style=\""+"margin-left:42px; \"" + "name='age' type='number'/></label><br/>" +
-                "<input value='ADD USER' style=\""+"margin-left:65px; margin-top: 30px; height: 30px; width: 100px \"" +"type='submit'/>" +
+                "<input value='ADD-USER' style=\""+"margin-left:65px; margin-top: 30px; height: 30px; width: 100px \"" +"type='submit'/>" +
                 "</form>" +
                 "</div>");
 
