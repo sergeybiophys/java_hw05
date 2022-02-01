@@ -1,9 +1,5 @@
 package sv.from.work.db;
 
-import javax.servlet.ServletException;
-import java.io.Console;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 public  class Connection {
@@ -14,7 +10,7 @@ public  class Connection {
 
 
 
-    public static ResultSet GetAll() throws SQLException {
+    public static ResultSet getAll() throws SQLException {
         ResultSet resultSet = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -38,7 +34,7 @@ public  class Connection {
         return  resultSet;
     }
 
-    public static void CreateUser(String username,String email, Integer age){
+    public static void createUser(String username, String email, Integer age){
 
         ResultSet resultSet = null;
         try {

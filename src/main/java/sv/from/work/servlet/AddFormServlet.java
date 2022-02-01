@@ -27,7 +27,7 @@ public class AddFormServlet extends HttpServlet {
         Enumeration<String> parameterNames = req.getParameterNames();
         if(parameterNames.hasMoreElements())
         {
-            Connection.CreateUser(req.getParameter("username"), req.getParameter("email"),Integer.parseInt(req.getParameter("age")));
+            Connection.createUser(req.getParameter("username"), req.getParameter("email"),Integer.parseInt(req.getParameter("age")));
         }
 
     }

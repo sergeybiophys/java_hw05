@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalTime;
 import java.sql.*;
-import java.util.Enumeration;
-import java.util.HashSet;
 
 public class HomeServlet extends HttpServlet {
     @Override
@@ -46,7 +43,7 @@ public class HomeServlet extends HttpServlet {
 
 
         try{
-            ResultSet resultSet = Connection.GetAll();
+            ResultSet resultSet = Connection.getAll();
             while (resultSet.next()) {
                 System.out.println("iamhere");
                 int id = resultSet.getInt("id");
